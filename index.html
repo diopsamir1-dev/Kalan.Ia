@@ -257,4 +257,1274 @@ details.prog ol { margin: 0; padding: 0 16px 16px 36px; display: grid; gap: 8px;
 .trailer.paused .tr-bars button.cur::after { animation: none; width: 100%; }
 @keyframes fill { from { width: 0; } to { width: 100%; } }
 .tr-label { position: absolute; top: 28px; left: 16px; z-index: 4; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stage-brand); }
-.tr-btn { position: absolute; z-index: 4; right: 12px; bottom: 10px; display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--stage-line); background: rgba(0
+.tr-btn { position: absolute; z-index: 4; right: 12px; bottom: 10px; display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--stage-line); background: rgba(0,0,0,.35); color: var(--stage-fg); font: 500 12px var(--font-body); cursor: pointer; }
+.tr-btn i { display: block; width: 10px; height: 10px; background: linear-gradient(90deg, currentColor 0 36%, transparent 36% 64%, currentColor 64%); }
+.trailer.paused .tr-btn i { background: none; width: 0; height: 0; border-style: solid; border-width: 5px 0 5px 9px; border-color: transparent transparent transparent currentColor; }
+.tr-stage { position: absolute; inset: 0; z-index: 2; }
+.sc { position: absolute; inset: 0; padding: 52px 20px 50px; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+.sc > * { animation: rise .55s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * .32s); }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+.trailer.paused .sc *, .trailer.paused .sc { animation: none !important; }
+.sc .k { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--stage-accent); }
+.sc h4 { font-family: var(--font-display); font-weight: 800; line-height: 1.05; font-size: clamp(19px, 6.4cqw, 34px); letter-spacing: -0.02em; }
+.sc p { font-size: clamp(13px, 3.4cqw, 16px); color: rgba(234,245,238,.78); }
+.bub { max-width: 94%; padding: 9px 12px; border-radius: 10px; font-size: clamp(11.5px, 3.2cqw, 15px); line-height: 1.45; }
+.bub b { display: block; font-family: var(--font-mono); font-weight: 500; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; opacity: .7; margin-bottom: 3px; }
+.bub.me { align-self: flex-end; background: rgba(255,255,255,.12); }
+.bub.ai { background: rgba(111,221,169,.16); border-left: 3px solid var(--stage-brand); visibility: hidden; }
+.bub.ai.on { visibility: visible; }
+.sc-steps ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; }
+.sc-steps li { display: flex; align-items: center; gap: 10px; font-size: clamp(13px, 3.8cqw, 17px); animation: rise .5s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i) * .55s + .5s); }
+.sc-steps li i { flex: none; position: relative; width: 20px; height: 20px; border-radius: 50%; background: var(--stage-brand); }
+.sc-steps li i::after { content: ""; position: absolute; left: 7px; top: 3px; width: 5px; height: 10px; border: solid #07140E; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.cmps { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cmp { display: grid; gap: 6px; align-content: start; min-width: 0; }
+.cmp .l { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+.cmp .pp { background: rgba(255,255,255,.1); border-radius: 8px; padding: 8px 9px; font-size: clamp(10.5px, 2.9cqw, 13px); line-height: 1.4; }
+.cmp .rr { border-radius: 8px; padding: 8px 9px; font-size: clamp(10.5px, 2.9cqw, 13px); font-weight: 600; border: 1.5px solid; }
+.cmp.bad .l, .cmp.bad .rr { color: var(--stage-accent); border-color: var(--stage-accent); }
+.cmp.good .l, .cmp.good .rr { color: var(--stage-brand); border-color: var(--stage-brand); }
+.cmp .pp, .cmp .rr, .cmp .l { animation: rise .5s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i) * .5s); }
+.cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cal i { display: block; aspect-ratio: 1.6 / 1; border-radius: 4px; animation: pop .35s cubic-bezier(.2,.9,.3,1.3) both; animation-delay: calc(var(--i) * 70ms); }
+.cal .c0 { background: var(--stage-brand); }
+.cal .c1 { background: var(--stage-accent); }
+.cal .c2 { background: #F4F1E8; }
+.cal .c3 { background: rgba(255,255,255,.14); }
+@keyframes pop { from { transform: scale(.2); opacity: 0; } }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-family: var(--font-mono); font-size: 10px; color: rgba(234,245,238,.75); }
+.legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; background: var(--c); }
+.pst { position: relative; flex: 1; border-radius: 10px; overflow: hidden; background: linear-gradient(135deg, #0F5C3E, #2E9E6B); min-height: 0; }
+.pst h5 { position: absolute; left: 6%; top: 14%; width: 58%; margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(14px, 5.6cqw, 27px); line-height: 1; color: #fff; animation: rise .6s both; animation-delay: .5s; }
+.pst .ps { position: absolute; left: 6%; bottom: 12%; width: 55%; font-size: clamp(10px, 2.9cqw, 13px); color: rgba(255,255,255,.88); animation: rise .6s both; animation-delay: 1s; }
+.pst .pc { position: absolute; right: 7%; top: 14%; width: 34%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFE0B8, #E8590C); animation: pop .6s cubic-bezier(.2,.9,.3,1.3) both; animation-delay: 1.4s; }
+.pst .pbadge { position: absolute; right: 8%; bottom: 10%; background: #fff; color: #C2410C; font-family: var(--font-mono); font-weight: 500; font-size: clamp(12px, 4cqw, 18px); padding: 6px 12px; border-radius: 6px; transform: rotate(-8deg); animation: stamp .45s cubic-bezier(.2,.9,.3,1.3) both; animation-delay: 2.2s; }
+@keyframes stamp { from { transform: rotate(-8deg) scale(2.4); opacity: 0; } }
+.sc-cta { align-items: flex-start; }
+.sc-cta .price { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 10cqw, 52px); line-height: 1; color: var(--stage-accent); }
+.sc-cta .pill { margin-top: 4px; align-self: flex-start; background: var(--stage-accent); color: #1A0A02; font-weight: 600; font-size: 13px; padding: 9px 16px; border-radius: 999px; border: 0; font-family: var(--font-body); cursor: pointer; min-height: 40px; }
+.trailer:not(.paused) .sc-cta .pill { animation: rise .5s both, pulse 1.6s ease-in-out .8s infinite; animation-delay: calc(var(--i) * .32s), .8s; }
+@keyframes pulse { 50% { transform: scale(1.07); } }
+
+/* Parcours */
+.steps { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); }
+.step { min-width: 0; padding: 20px 0 0; border-top: 3px solid var(--brand-bg); }
+.step .n { font-family: var(--font-mono); font-size: 13px; color: var(--hot); }
+.step h3 { font-size: 24px; margin: 8px 0 10px; letter-spacing: -0.02em; }
+.step p { color: var(--muted); font-size: 15px; }
+.step .what { margin-top: 12px; font-size: 13px; font-family: var(--font-mono); }
+
+/* Services */
+.rows { border-top: 1px solid var(--line); }
+.row { display: grid; gap: 8px 40px; padding: 28px 0; border-bottom: 1px solid var(--line); grid-template-columns: 1fr; transition: padding-left .25s ease; }
+.row:hover { padding-left: 12px; }
+@media (min-width: 800px) { .row { grid-template-columns: 0.8fr 1.2fr; } }
+.row > * { min-width: 0; }
+.row h3 { font-size: 21px; }
+.row .for { font-family: var(--font-mono); font-size: 12.5px; color: var(--brand); margin-top: 6px; }
+.row p { color: var(--muted); max-width: 60ch; }
+
+/* Tarifs */
+.plans { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 245px), 1fr)); align-items: stretch; }
+.plan { min-width: 0; display: flex; flex-direction: column; gap: 14px; padding: 26px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); transition: transform .25s ease; }
+.plan:hover { transform: translateY(-5px); }
+.plan.best { background: var(--brand-bg); color: var(--on-brand); border-color: var(--brand-bg); }
+.plan.best .muted { color: inherit; opacity: 0.88; }
+.plan .name { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+.plan .amount { font-family: var(--font-display); font-size: 38px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+.plan .amount span { font-family: var(--font-mono); font-size: 13px; font-weight: 400; letter-spacing: 0; }
+.plan ul { margin: 0; padding: 0 0 0 18px; display: grid; gap: 6px; font-size: 15px; flex: 1; }
+.pay { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; font-size: 14px; color: var(--muted); }
+.pay span.m { font-family: var(--font-mono); font-size: 12.5px; border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; color: var(--fg); }
+
+/* FAQ */
+.faq { max-width: 760px; border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); padding: 4px 0; }
+.faq summary { cursor: pointer; padding: 16px 28px 16px 0; font-weight: 600; font-size: 17px; list-style: none; position: relative; min-height: 44px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 4px; top: 12px; font-family: var(--font-mono); font-size: 22px; color: var(--hot); }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { padding: 0 28px 18px 0; color: var(--muted); }
+
+/* Contact */
+.contact { display: grid; gap: 32px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .contact { grid-template-columns: 0.9fr 1.1fr; gap: 56px; } }
+.contact > * { min-width: 0; }
+.form { display: grid; gap: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; }
+input, select, textarea { font: 400 16px var(--font-body); color: var(--fg); background: var(--bg); border: 1.5px solid var(--line); border-radius: 8px; padding: 12px; width: 100%; min-height: 46px; }
+textarea { min-height: 150px; resize: vertical; font-size: 15px; line-height: 1.55; }
+.copied { font-size: 14px; color: var(--brand); min-height: 1.4em; }
+.num { font-family: var(--font-mono); font-size: 20px; margin: 4px 0 2px; user-select: all; }
+.side p + p { margin-top: 12px; }
+.side > p { color: var(--muted); }
+
+footer { border-top: 1px solid var(--line); padding-top: 32px; display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); font-size: 14px; color: var(--muted); }
+footer h5 { margin: 0 0 8px; font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg); }
+footer a { display: block; text-decoration: none; padding: 3px 0; }
+footer a:hover { color: var(--fg); }
+
+/* Barre d'inscription fixe */
+.sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 35; background: var(--surface); border-top: 1px solid var(--line); padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); transform: translateY(110%); transition: transform .35s ease; }
+.sticky.on { transform: none; }
+.sticky .in { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.sticky b { font-family: var(--font-display); font-size: 16px; }
+.sticky span { display: block; font-size: 12.5px; color: var(--muted); font-family: var(--font-mono); }
+
+/* Élèves, à la une, fenêtre d'inscription */
+.live { display: flex; width: fit-content; align-items: center; gap: 8px; margin-bottom: 14px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-family: var(--font-mono); font-size: 12px; }
+.live i { flex: none; width: 8px; height: 8px; border-radius: 50%; background: #1FA463; animation: ping 1.8s ease-out infinite; }
+@keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(31, 164, 99, .55); } 100% { box-shadow: 0 0 0 9px rgba(31, 164, 99, 0); } }
+.feat { padding-block: 40px 8px; }
+.feat-head { display: grid; gap: 8px; margin-bottom: 20px; max-width: 62ch; }
+.feat-head h2 { font-size: clamp(1.5rem, 3.8vw, 2.2rem); font-weight: 800; letter-spacing: -0.01em; }
+.feat-head p { color: var(--muted); }
+.feat-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+.feat-card { min-width: 0; display: flex; flex-direction: column; gap: 12px; padding: 26px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.feat-card.best { background: var(--brand-bg); color: var(--on-brand); border-color: var(--brand-bg); }
+.feat-card .ftag { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--hot); }
+.feat-card.best .ftag { color: inherit; opacity: .85; }
+.feat-card h3 { font-size: clamp(1.4rem, 3.2vw, 1.9rem); font-weight: 800; }
+.feat-card p { font-size: 15.5px; color: var(--muted); }
+.feat-card.best p { color: inherit; opacity: .92; }
+.feat-card ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 15px; }
+.feat-card .fprice { margin-top: auto; padding-top: 8px; font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1; letter-spacing: -0.01em; }
+.feat-card .fprice small { display: block; margin-top: 8px; font-family: var(--font-mono); font-size: 12px; font-weight: 400; letter-spacing: 0; opacity: .85; }
+.feat-card .frow { display: flex; flex-wrap: wrap; gap: 10px; }
+.feat-card.best .btn-line { color: inherit; border-color: color-mix(in srgb, currentColor 45%, transparent); }
+.feat-card.best .btn-hot { background: var(--on-brand); color: var(--brand); }
+html.modal-open { overflow: hidden; }
+.modal { position: fixed; inset: 0; z-index: 60; display: grid; place-items: center; padding: max(12px, env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
+.modal[hidden] { display: none; }
+.modal-bg { position: absolute; inset: 0; background: rgba(5, 16, 11, .62); animation: fade .25s ease both; }
+.modal-box { position: relative; width: 100%; max-width: 560px; max-height: 100%; overflow-y: auto; background: var(--surface); color: var(--fg); border: 1px solid var(--line); border-radius: 14px; padding: 24px 22px 26px; animation: sheet .3s cubic-bezier(.2, .8, .2, 1) both; outline: none; overscroll-behavior: contain; }
+@keyframes fade { from { opacity: 0; } }
+@keyframes sheet { from { opacity: 0; transform: translateY(24px) scale(.98); } }
+.modal-box h2 { font-size: 26px; font-weight: 800; padding-right: 40px; }
+.modal-box .sub { margin-top: 6px; font-size: 14px; color: var(--muted); }
+.modal-x { position: absolute; top: 10px; right: 10px; width: 44px; height: 44px; border: 0; background: none; color: var(--fg); font-size: 30px; line-height: 1; cursor: pointer; border-radius: 8px; }
+.modal-box .form { border: 0; padding: 0; background: none; margin-top: 16px; }
+.modal-box textarea { min-height: 120px; }
+.mailrow { display: flex; flex-wrap: wrap; gap: 10px; }
+.mailtxt { font-family: var(--font-mono); font-size: 15px; overflow-wrap: anywhere; user-select: all; }
+
+/* Paiement */
+.co-step { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 18px; margin-top: 4px; }
+.co-n { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--brand-bg); color: var(--on-brand); font-family: var(--font-mono); font-size: 13px; flex: none; }
+.pm { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr)); gap: 10px; }
+.pmopt { position: relative; display: block; font-weight: 600; }
+.pmopt input { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; margin: 0; padding: 0; border: 0; opacity: 0; cursor: pointer; }
+.pmopt span { display: flex; align-items: center; justify-content: center; min-height: 52px; padding: 8px; text-align: center; border: 1.5px solid var(--line); border-radius: 10px; background: var(--bg); transition: border-color .2s ease, background .2s ease; }
+.pmopt input:checked + span { border-color: var(--hot-bg); background: var(--hot-soft); }
+.pmopt input:focus-visible + span { outline: 3px solid var(--hot); outline-offset: 2px; }
+.co-sum { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 14px 16px; border-radius: 10px; background: var(--tint); font-size: 15px; }
+.co-sum b { font-family: var(--font-display); font-size: 22px; letter-spacing: -0.02em; }
+.co-pay { border: 1px dashed var(--line); border-radius: 10px; padding: 14px 16px; font-size: 15px; color: var(--muted); }
+.co-pay ol { margin: 0; padding-left: 20px; display: grid; gap: 8px; color: var(--fg); }
+.co-pay .n2 { font-family: var(--font-mono); font-weight: 500; user-select: all; }
+.co-pay .pnote { margin-top: 10px; font-size: 13px; }
+.co-pay .btn { margin-top: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .rv { opacity: 1; transform: none; }
+}
+</style>
+
+<style>html{color-scheme:light}body{margin:0}</style>
+</head>
+<body>
+<!-- Les prix, durées, horaires, le numéro WhatsApp et les numéros de paiement (variable PAY dans le script) sont des exemples à remplacer par les tiens. -->
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#debut">Kalan <b>IA</b></a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#formations">Formations</a>
+      <a href="#pourquoi">Pourquoi l'IA</a>
+      <a href="#services">Services</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#faq">Questions</a>
+    </nav>
+    <a class="btn btn-hot btn-sm" href="#contact" data-open="">Je m'inscris</a>
+  </div>
+</header>
+
+<main class="wrap" id="debut">
+  <div class="hero">
+    <div>
+      <span class="live"><i></i>Plus de 50 élèves en apprentissage en ce moment</span>
+      <span class="eyebrow">Formations IA et vente en ligne</span>
+      <h1>L'IA, enfin utile pour <span class="rot" id="rot">ta boutique</span>.</h1>
+      <p class="lead">Apprends à écrire de bonnes consignes, à gérer tes réseaux avec l'IA, à vendre en ligne (dropshipping, Chariow, WhatsApp Business) et à créer images et vidéos. Des séances pratiques, avec tes propres exemples, à des prix accessibles.</p>
+      <div class="cta">
+        <a class="btn btn-hot btn-lg" href="#formations">Voir les bandes-annonces</a>
+        <a class="btn btn-line btn-lg" href="#tarifs">Voir les tarifs</a>
+      </div>
+      <ul class="facts">
+        <li>À partir de 5 000 FCFA</li>
+        <li>En ligne, en direct</li>
+        <li>Débutants bienvenus</li>
+      </ul>
+    </div>
+
+    <div class="demo-wrap">
+      <span class="float f1">Idée de post</span>
+      <span class="float f2">Réponse WhatsApp</span>
+      <span class="float f3">Affiche en quelques minutes</span>
+      <div class="demo" aria-label="Exemples de consignes données à une IA">
+        <div class="demo-tabs" role="tablist">
+          <button role="tab" id="t0" aria-selected="true">Post Instagram</button>
+          <button role="tab" id="t1" aria-selected="false">Réponse client</button>
+          <button role="tab" id="t2" aria-selected="false">Idées de vidéos</button>
+        </div>
+        <div class="demo-body" role="tabpanel">
+          <div>
+            <div class="demo-label">Ta consigne</div>
+            <div class="prompt" id="d-prompt">Tu es community manager. Écris un post Instagram pour ma boutique de pagnes à Cocody : nouvelle collection, livraison à Abidjan, ton chaleureux, 3 hashtags.</div>
+          </div>
+          <div>
+            <div class="demo-label">Réponse de l'IA</div>
+            <div class="answer" id="d-answer">Nouvelle collection de pagnes, arrivée cette semaine à la boutique. Wax, bogolan, des motifs que vous ne verrez nulle part ailleurs. Livraison partout à Abidjan, paiement par Wave ou Orange Money. Écrivez-nous en message privé pour réserver votre pièce. #PagnesAbidjan #ModeIvoirienne #Wax</div>
+          </div>
+        </div>
+        <div class="demo-foot">Même outil, trois résultats. Tout dépend de la consigne, et ça s'apprend.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="marq" aria-label="Outils abordés en formation">
+    <div class="marq-track">
+      <div class="marq-grp"><span>ChatGPT</span><span>Claude</span><span>Gemini</span><span>Canva</span><span>CapCut</span><span>WhatsApp Business</span><span>Chariow</span><span>Facebook</span><span>Instagram</span><span>TikTok</span></div>
+      <div class="marq-grp" aria-hidden="true"><span>ChatGPT</span><span>Claude</span><span>Gemini</span><span>Canva</span><span>CapCut</span><span>WhatsApp Business</span><span>Chariow</span><span>Facebook</span><span>Instagram</span><span>TikTok</span></div>
+    </div>
+  </div>
+
+  <div class="feat" id="alaune">
+    <div class="feat-head rv">
+      <span class="eyebrow">À la une</span>
+      <h2>Commence par la vente en ligne</h2>
+      <p>Les deux offres les plus demandées pour lancer une activité. Rejoins les plus de 50 élèves qui apprennent en ce moment.</p>
+    </div>
+    <div class="feat-grid">
+      <article class="feat-card best rv">
+        <span class="ftag">Pack · 3 formations</span>
+        <h3>Pack E-commerce</h3>
+        <p>Apprends à vendre en ligne de A à Z : produits physiques sans stock, produits numériques et visuels qui donnent envie d'acheter.</p>
+        <ul><li>Dropshipping avec l'IA</li><li>Vendre tes produits numériques sur Chariow</li><li>Canva pour vendre en ligne</li></ul>
+        <div class="fprice">12 000 FCFA<small>au lieu de 23 500 FCFA · 11 séances</small></div>
+        <div class="frow">
+          <button class="btn btn-hot btn-lg" type="button" data-open="Pack E-commerce">Je m'inscris</button>
+          <a class="btn btn-line btn-lg" href="#formations">Voir la bande-annonce</a>
+        </div>
+      </article>
+      <article class="feat-card rv">
+        <span class="ftag">Formation · Chariow</span>
+        <h3>Vendre tes produits numériques sur Chariow</h3>
+        <p>Ouvre ta boutique, mets ton ebook, ton modèle ou ta mini-formation en ligne et encaisse par Mobile Money.</p>
+        <ul><li>Créer et configurer ta boutique</li><li>Rédiger ta page de vente avec l'IA</li><li>Lancer et suivre tes ventes</li></ul>
+        <div class="fprice">7 500 FCFA<small>3 séances de 2 h</small></div>
+        <div class="frow">
+          <button class="btn btn-hot btn-lg" type="button" data-open="Vendre tes produits numériques sur Chariow">Je m'inscris</button>
+          <a class="btn btn-line btn-lg" href="#formations">Voir la bande-annonce</a>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div class="qband rv" id="qband">
+    <span class="eyebrow">Une question pour toi</span>
+    <p class="qtxt" id="qtxt" aria-live="polite">Savais-tu que tu peux générer des revenus juste dans ton salon avec l'IA ?</p>
+    <div class="qctl">
+      <a class="btn btn-hot" href="#formations">Je veux apprendre</a>
+      <button class="btn btn-line" id="qnext" type="button">Question suivante</button>
+      <div class="qdots" id="qdots" role="group" aria-label="Choisir une question"></div>
+    </div>
+  </div>
+
+  <section id="formations" style="border-top:1px solid var(--line)">
+    <div class="sec-head rv">
+      <span class="eyebrow">Les formations</span>
+      <h2>Douze formations et un pack, chacun avec sa bande-annonce</h2>
+      <p>Regarde la bande-annonce, lis ce que tu sauras faire à la fin, puis inscris-toi. Chaque formation se suit seule, sans prérequis technique.</p>
+    </div>
+    <div class="chips" role="group" aria-label="Filtrer les formations">
+      <button class="chip" data-filter="all" aria-pressed="true">Toutes</button>
+      <button class="chip" data-filter="debut" aria-pressed="false">Pour commencer</button>
+      <button class="chip" data-filter="reseaux" aria-pressed="false">Réseaux sociaux</button>
+      <button class="chip" data-filter="activite" aria-pressed="false">Activité et revenus</button>
+      <button class="chip" data-filter="vendre" aria-pressed="false">Vendre en ligne</button>
+    </div>
+    <div id="shows"></div>
+  </section>
+
+  <section id="pourquoi">
+    <div class="sec-head rv">
+      <span class="eyebrow">Pourquoi apprendre l'IA</span>
+      <h2>Ce que ça change concrètement pour toi</h2>
+      <p>L'IA ne remplace pas ton savoir-faire. Elle s'occupe des tâches qui te prennent du temps, pour que tu en gardes pour ton métier.</p>
+    </div>
+    <div class="reasons">
+      <div class="reason rv">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <h3>Gagner du temps</h3>
+        <p>Les textes, messages et documents répétitifs se préparent en quelques minutes. Tu gardes ton énergie pour ce qui compte vraiment.</p>
+      </div>
+      <div class="reason rv">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h3l6 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M16.5 9a4 4 0 0 1 0 6"/></svg>
+        <h3>Mieux te faire connaître</h3>
+        <p>Publications régulières, visuels soignés, réponses rapides : tes clients te voient plus souvent et pensent à toi au moment d'acheter.</p>
+      </div>
+      <div class="reason rv">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/><circle cx="16.5" cy="14.5" r="1.2"/></svg>
+        <h3>Ouvrir une source de revenu</h3>
+        <p>Boutique en ligne, produits numériques, rédaction, réseaux sociaux : l'IA t'aide à proposer ce que des clients recherchent déjà.</p>
+      </div>
+      <div class="reason rv">
+        <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17l6-6 4 4 6-7"/><path d="M15 8h5v5"/></svg>
+        <h3>Rester dans la course</h3>
+        <p>À l'école, au travail et en affaires, ceux qui savent utiliser l'IA avancent plus vite. Autant l'apprendre maintenant, avec un guide.</p>
+      </div>
+    </div>
+
+    <div class="ba rv">
+      <div class="before">
+        <h3>Sans méthode</h3>
+        <ul><li>Tu fixes un écran vide en cherchant tes mots</li><li>Tu testes l'IA, la réponse est vague, tu abandonnes</li><li>Tu publies quand tu as le temps, donc rarement</li><li>Tu réponds aux clients le soir, quand tu es fatigué</li></ul>
+      </div>
+      <div class="after">
+        <h3>Après la formation</h3>
+        <ul><li>Tu obtiens un premier jet en quelques secondes et tu le corriges</li><li>Tu sais formuler la consigne qui donne le bon résultat</li><li>Tu as un calendrier de publications prêt pour le mois</li><li>Tu gardes des modèles de réponses prêts à envoyer</li></ul>
+      </div>
+    </div>
+
+    <div class="dyk-head rv">
+      <span class="eyebrow">Touche pour découvrir</span>
+      <h3>Savais-tu que… ?</h3>
+    </div>
+    <div class="dyk">
+      <button class="dk rv" type="button" aria-expanded="false"><span class="dq">Savais-tu qu'un simple téléphone suffit pour apprendre l'IA ?</span><span class="da">Les exercices de base se font sur téléphone. Un ordinateur aide surtout pour les images et les vidéos.</span><span class="hint">Voir la réponse</span></button>
+      <button class="dk rv" type="button" aria-expanded="false"><span class="dq">Savais-tu que tu peux vendre un ebook sans stock ni livraison ?</span><span class="da">Un produit numérique est livré après le paiement. Tu peux le proposer sur une plateforme comme Chariow.</span><span class="hint">Voir la réponse</span></button>
+      <button class="dk rv" type="button" aria-expanded="false"><span class="dq">Savais-tu que l'IA peut préparer tes réponses aux clients ?</span><span class="da">Tu lui donnes le contexte, elle propose un message. Tu relis, tu corriges, tu envoies.</span><span class="hint">Voir la réponse</span></button>
+      <button class="dk rv" type="button" aria-expanded="false"><span class="dq">Savais-tu qu'on peut créer une affiche sans savoir dessiner ?</span><span class="da">Avec Canva et l'IA, tu choisis le style et l'outil fait le gros du travail.</span><span class="hint">Voir la réponse</span></button>
+    </div>
+
+    <div class="sim rv">
+      <div>
+        <span class="eyebrow">Simulateur</span>
+        <h3>Combien de temps pourrais-tu gagner ?</h3>
+        <div class="fields">
+          <label for="sim-n">Tâches répétitives par semaine (posts, messages, devis) <span id="o-n">10</span>
+            <input id="sim-n" type="range" min="1" max="60" value="10">
+          </label>
+          <label for="sim-m">Minutes passées sur chaque tâche <span id="o-m">20 min</span>
+            <input id="sim-m" type="range" min="5" max="90" step="5" value="20">
+          </label>
+          <label for="sim-g">Gain de temps que tu estimes avec l'IA <span id="o-g">50 %</span>
+            <input id="sim-g" type="range" min="20" max="80" step="5" value="50">
+          </label>
+        </div>
+      </div>
+      <div class="res">
+        <div class="big"><span id="r-h">7,2</span><small>h par mois</small></div>
+        <p id="r-d">Soit environ 11 journées de travail par an à reprendre pour toi.</p>
+        <p class="fine">Estimation selon tes propres chiffres, pas une promesse. Fais varier les curseurs.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="ask rv">
+    <p class="q">Combien de clients perds-tu chaque semaine parce que tu réponds trop tard <em>?</em></p>
+    <a class="btn btn-line" href="#formations">Apprends à répondre plus vite</a>
+  </div>
+
+
+  <section id="parcours">
+    <div class="sec-head rv">
+      <span class="eyebrow">Le parcours complet</span>
+      <h2>Comprendre, appliquer, rentabiliser, vendre</h2>
+      <p>Si tu pars de zéro, suis les formations dans cet ordre. Chaque étape prépare la suivante.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv">
+        <span class="n">Étape 1</span>
+        <h3>Comprendre</h3>
+        <p>Tu sais utiliser un assistant IA et lui parler de façon précise.</p>
+        <div class="what">Maîtriser l'IA de zéro · Prompts qui marchent</div>
+      </div>
+      <div class="step rv">
+        <span class="n">Étape 2</span>
+        <h3>Appliquer</h3>
+        <p>Tu produis tes publications, visuels et vidéos avec l'IA.</p>
+        <div class="what">Réseaux sociaux · Images et vidéos</div>
+      </div>
+      <div class="step rv">
+        <span class="n">Étape 3</span>
+        <h3>Rentabiliser</h3>
+        <p>Tu gagnes du temps dans ton activité ou tu vends tes services.</p>
+        <div class="what">Ton activité · Gagner de l'argent</div>
+      </div>
+      <div class="step rv">
+        <span class="n">Étape 4</span>
+        <h3>Vendre en ligne</h3>
+        <p>Tu ouvres ta boutique, tu crées ton produit et tu fais connaître ton offre.</p>
+        <div class="what">Dropshipping · Chariow · Canva · Produit numérique · Publicité · WhatsApp Business</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ask rv">
+    <p class="q">Et si ton savoir-faire devenait ton prochain produit <em>?</em></p>
+    <a class="btn btn-line" href="#contact">Parlons de ton projet</a>
+  </div>
+
+  <section id="services" style="border-top:1px solid var(--line)">
+    <div class="sec-head rv">
+      <span class="eyebrow">Services</span>
+      <h2>Quand tu préfères qu'on travaille avec toi</h2>
+      <p>En plus des formations, un accompagnement sur mesure pour ton projet ou ton équipe.</p>
+    </div>
+    <div class="rows">
+      <div class="row rv">
+        <div><h3>Audit IA de ton activité</h3><div class="for">Commerces, associations, indépendants</div></div>
+        <p>Nous regardons tes tâches de la semaine et repérons celles que l'IA peut faire plus vite. Tu reçois une liste claire, classée par gain de temps.</p>
+      </div>
+      <div class="row rv">
+        <div><h3>Lancement de ta boutique en ligne</h3><div class="for">Entrepreneurs qui démarrent</div></div>
+        <p>Nous t'aidons à ouvrir et configurer ta boutique : Chariow, WhatsApp Business ou boutique de dropshipping, jusqu'à la mise en ligne de tes premiers produits.</p>
+      </div>
+      <div class="row rv">
+        <div><h3>Création de ton produit numérique</h3><div class="for">Experts, formateurs, créateurs</div></div>
+        <p>Plan, rédaction, couverture et page de vente : nous t'accompagnons pour transformer ce que tu sais en ebook, modèle ou mini-formation prêts à vendre.</p>
+      </div>
+      <div class="row rv">
+        <div><h3>Réseaux sociaux accompagnés</h3><div class="for">Créateurs, boutiques, marques</div></div>
+        <p>Un calendrier de publications, des modèles de messages et un suivi chaque semaine pendant que tu prends tes habitudes avec les outils.</p>
+      </div>
+      <div class="row rv">
+        <div><h3>Atelier en entreprise</h3><div class="for">Équipes de 5 à 30 personnes</div></div>
+        <p>Une demi-journée ou une journée pratique, construite avec vos documents et vos cas réels. Chacun repart avec ses propres modèles.</p>
+      </div>
+      <div class="row rv">
+        <div><h3>Coaching individuel</h3><div class="for">Dirigeants, étudiants, demandeurs d'emploi</div></div>
+        <p>Des séances privées pour un besoin précis : un CV, un mémoire, un business plan, une candidature.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="ask rv">
+    <p class="q">Et si la meilleure décision de ton année commençait à 5 000 FCFA <em>?</em></p>
+    <a class="btn btn-line" href="#tarifs">Voir les tarifs</a>
+  </div>
+
+  <section id="tarifs" style="border-top:1px solid var(--line)">
+    <div class="sec-head rv">
+      <span class="eyebrow">Tarifs</span>
+      <h2>Des prix pensés pour tout le monde</h2>
+      <p>De 5 000 à 12 000 FCFA. Teste pour 5 000 FCFA, choisis une formation, ou prends le pack E-commerce : trois formations pour 12 000 FCFA.</p>
+    </div>
+    <div class="plans">
+      <div class="plan rv">
+        <span class="name">Séance découverte</span>
+        <div class="amount">5 000 <span>FCFA</span></div>
+        <p class="muted">Pour tester avant de t'engager.</p>
+        <ul><li>1 séance de 1 h 30</li><li>Un sujet de ton choix</li><li>Montant déduit si tu t'inscris ensuite</li></ul>
+        <a class="btn btn-line" href="#contact" data-open="Séance découverte">Réserver</a>
+      </div>
+      <div class="plan rv">
+        <span class="name">Une formation</span>
+        <div class="amount">5 000 <span>FCFA et plus</span></div>
+        <p class="muted">De 5 000 à 10 000 FCFA selon la formation.</p>
+        <ul><li>3 à 5 séances de 2 h</li><li>Exercices avec tes propres cas</li><li>Aide par message entre les séances</li></ul>
+        <a class="btn btn-line" href="#formations">Voir les formations</a>
+      </div>
+      <div class="plan best rv">
+        <span class="name">Pack E-commerce</span>
+        <div class="amount">12 000 <span>FCFA</span></div>
+        <p class="muted">Trois formations au lieu de 23 500 FCFA.</p>
+        <ul><li>Dropshipping avec l'IA</li><li>Vendre tes produits numériques sur Chariow</li><li>Canva pour vendre en ligne</li><li>Aide par message entre les séances</li></ul>
+        <a class="btn btn-hot" href="#contact" data-open="Pack E-commerce">Je m'inscris</a>
+      </div>
+    </div>
+    <div class="pay">
+      <span>Paiement par</span>
+      <span class="m">Wave</span><span class="m">MTN MoMo</span><span class="m">Moov Money</span>
+      <span>Entreprises : atelier sur devis.</span>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="sec-head rv">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2>Avant de t'inscrire</h2>
+    </div>
+    <div class="faq">
+      <details>
+        <summary>Je ne suis pas à l'aise avec l'informatique. Puis-je suivre ?</summary>
+        <p>Oui. Il suffit de savoir utiliser un téléphone ou un ordinateur pour écrire un message. La première formation part de zéro.</p>
+      </details>
+      <details>
+        <summary>Combien vais-je gagner ?</summary>
+        <p>Personne ne peut te le garantir, et méfie-toi de ceux qui le font. Nous t'apprenons des méthodes et des outils. Le résultat dépend de ton travail, de ton produit et de tes clients.</p>
+      </details>
+      <details>
+        <summary>Le dropshipping, ça marche vraiment ?</summary>
+        <p>Ça peut fonctionner, mais ce n'est pas magique. Les délais de livraison, les retours, la publicité et les marges demandent de la rigueur. La formation t'explique ces risques avant que tu dépenses de l'argent.</p>
+      </details>
+      <details>
+        <summary>Chariow, c'est quoi ?</summary>
+        <p>Une plateforme africaine pour vendre des produits numériques (ebooks, modèles, formations) avec paiement par Mobile Money et carte, sans créer de site web. C'est un service indépendant de Kalan IA, dont les conditions peuvent évoluer.</p>
+      </details>
+      <details>
+        <summary>Quels outils allons-nous utiliser ?</summary>
+        <p>Des assistants comme ChatGPT, Claude et Gemini, et des outils de création comme Canva et CapCut. Les versions gratuites suffisent pour bien démarrer, tu n'as pas besoin de payer un abonnement.</p>
+      </details>
+      <details>
+        <summary>Faut-il un ordinateur ?</summary>
+        <p>Un téléphone suffit pour la plupart des exercices. Un ordinateur est plus confortable pour les images et les vidéos.</p>
+      </details>
+      <details>
+        <summary>Et si je ne comprends pas une partie ?</summary>
+        <p>Les séances sont pratiques et en petit groupe, tu peux poser tes questions en direct. Entre les séances, tu peux aussi écrire par message.</p>
+      </details>
+      <details>
+        <summary>Comment se déroulent les séances ?</summary>
+        <p>En ligne, en direct, avec des exercices pendant la séance. Si tu manques une séance, tu peux la rattraper avec le groupe suivant ou en séance privée.</p>
+      </details>
+      <details>
+        <summary>Comment payer ?</summary>
+        <p>Dans le formulaire d'inscription, tu choisis Wave, MTN MoMo ou Moov Money. Le site te donne le montant et le numéro. Tu envoies l'argent, puis tu nous envoies la capture sur WhatsApp. Ta place est confirmée dès que nous avons vérifié le paiement.</p>
+      </details>
+    </div>
+  </section>
+
+  <div class="ask rv">
+    <p class="q">Qui t'empêche de commencer aujourd'hui <em>?</em></p>
+    <a class="btn btn-hot btn-lg" href="#contact" data-open="">Je réserve ma place</a>
+  </div>
+
+  <section id="contact" style="border-top:1px solid var(--line)">
+    <div class="contact">
+      <div class="side rv">
+        <div class="sec-head" style="margin-bottom:20px">
+          <span class="eyebrow">Contact</span>
+          <h2>Une question ? Écris-nous</h2>
+        </div>
+        <p>Tu veux des précisions avant de choisir ? Écris-nous sur WhatsApp ou par e-mail. Pour t'inscrire, appuie sur « Je m'inscris » : le formulaire s'ouvre tout de suite, sans quitter la page.</p>
+        <p>Plus de 50 élèves sont en apprentissage en ce moment.</p>
+      </div>
+      <div class="form rv" id="cinfo">
+        <div>
+          <div class="demo-label">WhatsApp</div>
+          <div class="num">05 65 55 92 87</div>
+          <a class="btn btn-line" href="https://wa.me/2250565559287" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+        </div>
+        <div>
+          <div class="demo-label">E-mail</div>
+          <div class="mailtxt">kelanIAservice@gmail.com</div>
+          <div class="mailrow" style="margin-top:10px">
+            <button class="btn btn-line" id="copymail" type="button">Copier l'adresse</button>
+            <a class="btn btn-line" href="mailto:kelanIAservice@gmail.com">Ouvrir ma messagerie</a>
+          </div>
+          <div class="copied" id="cmout" role="status"></div>
+        </div>
+        <p class="muted">Du lundi au samedi, de 9 h à 18 h.</p>
+        <button class="btn btn-hot btn-lg" type="button" data-open="">Je m'inscris maintenant</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <a class="brand" href="#debut" style="display:inline-flex;margin-bottom:8px">Kalan <b>IA</b></a>
+      <p>Formations et services pour utiliser l'IA et vendre en ligne, en français.</p>
+    </div>
+    <div>
+      <h5>Formations</h5>
+      <a href="#formations">Maîtriser l'IA de zéro</a>
+      <a href="#formations">Réseaux sociaux</a>
+      <a href="#formations">Dropshipping</a>
+      <a href="#formations">Chariow</a>
+    </div>
+    <div>
+      <h5>Infos</h5>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#services">Services</a>
+      <a href="#faq">Questions</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div>
+      <h5>© 2026</h5>
+      <p>Tous droits réservés.</p>
+    </div>
+  </footer>
+</main>
+
+<div class="sticky" id="sticky">
+  <div class="in">
+    <div><b>Pack E-commerce · 12 000 FCFA</b><span>Chariow, Dropshipping et Canva</span></div>
+    <a class="btn btn-hot btn-sm" href="#contact" data-open="Pack E-commerce">Je m'inscris</a>
+  </div>
+</div>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-bg" data-close></div>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+    <button class="modal-x" type="button" data-close aria-label="Fermer la fenêtre">&times;</button>
+    <h2 id="modal-title">Inscris-toi</h2>
+    <p class="sub">Trois étapes, sans quitter la page. Plus de 50 élèves apprennent en ce moment.</p>
+    <div class="form" id="checkout">
+        <div class="co-step"><span class="co-n">1</span>Ta commande</div>
+        <label for="nom">Ton prénom
+          <input id="nom" type="text" autocomplete="given-name" placeholder="Awa">
+        </label>
+        <label for="formation">Formation
+          <select id="formation">
+            <option value="">Je ne sais pas encore, conseillez-moi</option>
+            <option value="Séance découverte">Séance découverte (5 000 FCFA)</option>
+            <option value="Pack E-commerce">Pack E-commerce (3 formations, 12 000 FCFA)</option>
+            <optgroup label="Formations" id="og"></optgroup>
+          </select>
+        </label>
+        <label for="format">Format
+          <select id="format">
+            <option>En groupe</option>
+            <option>Séance privée</option>
+          </select>
+        </label>
+        <div class="co-sum" id="sum" aria-live="polite"></div>
+        <div class="co-step"><span class="co-n">2</span>Choisis ton mode de paiement</div>
+        <div class="pm" id="pm" role="radiogroup" aria-label="Mode de paiement"></div>
+        <div class="co-pay" id="copay" aria-live="polite"></div>
+        <div class="co-step"><span class="co-n">3</span>Envoie ta preuve de paiement</div>
+        <label for="msg">Ton message pour WhatsApp
+          <textarea id="msg" readonly></textarea>
+        </label>
+        <button class="btn btn-hot btn-lg" id="copy" type="button">Copier le message</button>
+        <a class="btn btn-line btn-lg" id="wa" href="https://wa.me/2250565559287" target="_blank" rel="noopener">Ouvrir WhatsApp avec mon message</a>
+        <div class="copied" id="copied" role="status"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  document.documentElement.classList.add('js');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function money(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+
+  /* ---------- Données des formations ---------- */
+  var F = [
+    {
+      id: 'pack', pack: true, cat: 'vendre', tag: 'Pack E-commerce', title: 'Pack E-commerce', price: 12000, was: 23500,
+      dur: '3 formations · 11 séances', lvl: 'Intermédiaire',
+      hook: "Et si tu apprenais à vendre en ligne, de A à Z, pour 12 000 FCFA ?",
+      pitch: "Trois formations dans un seul pack : vendre des produits sans stock, vendre tes produits numériques et créer les visuels qui donnent envie d'acheter.",
+      why: ["Tu apprends les trois bases de la vente en ligne, dans le bon ordre.",
+            "Tu paies 12 000 FCFA au lieu de 23 500 FCFA si tu prenais les trois formations séparément.",
+            "Tu peux démarrer avec un produit physique ou un produit numérique, selon ce qui te convient."],
+      learn: ["Lancer une boutique de dropshipping et en connaître les risques", "Ouvrir ta boutique de produits numériques sur Chariow", "Créer affiches, visuels produit et couvertures avec Canva", "Écrire tes fiches et tes pages de vente avec l'IA"],
+      who: "Débutants en vente en ligne, commerçants, créateurs, étudiants.",
+      note: "Aucun revenu n'est garanti. Chariow est une plateforme indépendante dont les conditions et les frais peuvent évoluer.",
+      prog: ["Dropshipping avec l'IA (5 séances)", "Vendre tes produits numériques sur Chariow (3 séances)", "Canva pour vendre en ligne (3 séances)"],
+      scenes: [
+        { t: 'big', k: 'Bande-annonce', h: 'Trois formations. Un seul pack.', s: 'Tout pour commencer à vendre en ligne.' },
+        { t: 'steps', h: 'Dans le pack', items: ['Dropshipping avec l’IA', 'Chariow : tes produits numériques', 'Canva : tes visuels de vente'] }
+      ]
+    },
+    {
+      id: 'chariow', cat: 'vendre', tag: 'Vendre en ligne', title: "Vendre tes produits numériques sur Chariow", price: 7500,
+      dur: '3 séances de 2 h', lvl: 'Intermédiaire',
+      hook: "Savais-tu que tu peux vendre un ebook sans stock, sans local et sans livraison ?",
+      pitch: "Ouvre ta boutique de produits numériques et encaisse par Mobile Money.",
+      why: ["Un produit numérique se livre après le paiement : pas de stock, pas de transport.",
+            "Chariow est pensée pour les créateurs africains et accepte le Mobile Money et les cartes.",
+            "Tu n'as besoin ni d'un site web, ni de compétences techniques."],
+      learn: ["Créer ta boutique Chariow pas à pas", "Mettre en ligne un ebook, un modèle ou une formation", "Rédiger ta page de vente avec l'IA", "Utiliser promotions, affiliation et statistiques"],
+      who: "Créateurs, formateurs, étudiants, experts d'un métier.",
+      note: "Chariow est une plateforme indépendante : ses conditions et ses frais peuvent évoluer. Aucun revenu n'est garanti.",
+      prog: ["Créer et configurer ta boutique", "Préparer ton produit et sa page de vente", "Lancer, promouvoir et suivre tes ventes"],
+      scenes: [
+        { t: 'big', k: 'Bande-annonce', h: 'Et si ton savoir devenait un produit ?', s: 'Un ebook, un modèle, une mini-formation.' },
+        { t: 'steps', h: 'Ta boutique en 4 étapes', items: ['Tu crées ton produit', 'Tu ouvres ta boutique', 'Le client paie par Mobile Money', 'Il reçoit son accès'] },
+        { t: 'prompt', l: 'Séance 2', p: "Écris la page de vente d'un guide PDF « Réussir ses premières publications Instagram ». 4 phrases.", a: "Tes publications passent inaperçues ? Ce guide t'explique comment écrire, planifier et publier. Des modèles prêts à copier, des exemples ivoiriens. Télécharge-le après paiement par Mobile Money." }
+      ]
+    },
+    {
+      id: 'zero', cat: 'debut', tag: 'Pour commencer', title: "Maîtriser l'IA de zéro", price: 7500,
+      dur: '4 séances de 2 h', lvl: 'Débutant',
+      hook: "Et si l'IA te faisait gagner du temps chaque jour ?",
+      pitch: "Passe de « je ne sais pas par où commencer » à « je l'utilise tous les jours ».",
+      why: ["Tu gagnes du temps dès la première semaine sur tes messages, tes textes et tes recherches.",
+            "Tu comprends les limites de l'IA et tu évites les erreurs et les fausses informations.",
+            "Tu n'es plus dépassé quand on parle d'IA au travail, à l'école ou en famille."],
+      learn: ["Utiliser ChatGPT, Claude et Gemini", "Poser une question précise et obtenir une bonne réponse", "Vérifier une information avant de la partager", "Résumer, traduire et reformuler un texte"],
+      who: "Débutants, étudiants, salariés, commerçants, parents.",
+      prog: ["Ce qu'est l'IA et premiers essais", "Poser les bonnes questions", "Résumer, traduire, rédiger", "Vérifier, éviter les pièges, créer ta routine"],
+      scenes: [
+        { t: 'big', k: 'Bande-annonce', h: "L'IA te semble compliquée ?", s: "Elle l'est beaucoup moins qu'on le croit." },
+        { t: 'prompt', l: 'Séance 1', p: "Explique-moi la différence entre un virus et une bactérie, comme à un élève de 6e.", a: "Une bactérie est un petit être vivant qui peut vivre seul. Un virus a besoin d'entrer dans une cellule pour se reproduire. C'est pour cela que les antibiotiques agissent sur les bactéries, pas sur les virus." },
+        { t: 'steps', h: 'En 4 séances, tu sauras', items: ['Poser une question précise', 'Résumer et traduire un texte', 'Vérifier une réponse', 'Utiliser l’IA chaque jour'] }
+      ]
+    },
+    {
+      id: 'prompts', cat: 'debut', tag: 'Pour commencer', title: 'Prompts qui marchent', price: 5000,
+      dur: '3 séances de 2 h', lvl: 'Débutant',
+      hook: "Pourquoi l'IA te répond-elle à côté ? Souvent, tout se joue dans la consigne.",
+      pitch: "Une bonne consigne change tout : avec la même IA, le résultat n'a plus rien à voir.",
+      why: ["Tu obtiens des textes utilisables sans tout réécrire.",
+            "Tu gardes tes meilleures consignes et tu les réutilises à volonté.",
+            "Tu gagnes en précision, donc en confiance face à l'outil."],
+      learn: ["La méthode rôle, contexte, tâche, format", "Écrire une consigne claire en une minute", "Corriger une réponse décevante", "Te constituer une bibliothèque de consignes"],
+      who: "Toute personne qui a déjà essayé l'IA et trouvé les résultats décevants.",
+      prog: ["Anatomie d'une bonne consigne", "Exemples et exercices du quotidien", "Ta bibliothèque personnelle de consignes"],
+      scenes: [
+        { t: 'big', k: 'Bande-annonce', h: 'Même IA. Deux consignes.', s: 'Deux résultats très différents.' },
+        { t: 'compare',
+          a: { l: 'Consigne vague', p: 'Écris un message pour mes clients.', r: 'Texte générique, à réécrire' },
+          b: { l: 'Consigne précise', p: "Tu es gérant d'une pharmacie à Abidjan. Écris un message WhatsApp de 3 phrases pour annoncer nos horaires de fin d'année.", r: 'Message prêt à envoyer' } },
+        { t: 'steps', h: 'La méthode en 4 mots', items: ['Rôle : qui doit parler', 'Contexte : de quoi il s’agit', 'Tâche : ce que tu veux', 'Format : longueur et ton'] }
+      ]
+    },
+    {
+      id: 'reseaux', cat: 'reseaux', tag: 'Réseaux sociaux', title: "L'IA pour tes réseaux sociaux", price: 10000,
+      dur: '5 séances de 2 h', lvl: 'Tous niveaux',
+      hook: "Combien de personnes passent devant ta page sans jamais t'écrire ?",
+      pitch: "Publie régulièrement sans y passer tes soirées.",
+      why: ["Tu gardes un rythme de publication sans t'épuiser.",
+            "Tes clients te voient plus souvent, donc pensent à toi au moment d'acheter.",
+            "Tu réponds plus vite aux messages et aux commentaires."],
+      learn: ["Planifier un mois de publications en une séance", "Écrire légendes, scripts et hashtags dans ton style", "Répondre aux commentaires et aux messages", "Adapter un contenu à Facebook, Instagram, TikTok et WhatsApp"],
+      who: "Commerçants, créateurs de contenu, community managers, associations.",
+      prog: ["Ta ligne éditoriale", "Le calendrier du mois", "Légendes, scripts et hashtags", "Réponses aux clients et aux commentaires", "Mesurer et améliorer"],
+      scenes: [
+        { t: 'big', k: 'Bande-annonce', h: 'Et si ton mois de publications était prêt en une séance ?', s: 'Plus de page blanche.' },
+        { t: 'cal', h: 'Ton mois, planifié' },
+        { t: 'prompt', l: 'Séance 3', p: "Écris une légende Instagram pour mon salon de coiffure : promo du week-end sur les tresses, ton joyeux, 3 hashtags.", a: "Ce week-end, offrez-vous de nouvelles tresses à prix doux ! Réservez votre créneau en message privé, les places partent vite. #TressesAbidjan #SalonDeCoiffure #WeekendBeauté" },
+        { t: 'steps', h: 'Une seule idée, quatre réseaux', items: ['Facebook', 'Instagram', 'TikTok', 'WhatsApp Business'] }
+      ]
+    },
+    {
+      id: 'media', cat: 'reseaux', tag: 'Réseaux sociaux', title: 'Images et vidéos avec l’IA', price: 8000,
+      dur: '4 séances de 2 h', lvl: 'Tous niveaux',
+      hook: "Pourquoi payer un graphiste pour une simple affiche ?",
+      pitch: "Des visuels qui font arrêter le pouce, sans graphiste.",
+      why: ["Tu économises le prix d'un graphiste pour les visuels simples.",
+            "Tes publications ressortent dans le fil d'actualité de tes clients.",
+            "Tu produis affiches et miniatures en quelques minutes."],
+      learn: ["Générer et retoucher des images", "Créer une affiche ou une miniature avec Canva", "Monter une vidéo courte avec CapCut", "Garder une identité visuelle cohérente"],
+      who: "Boutiques, créateurs, associations, toute personne qui publie en ligne.",
+      prog: ["Générer des images", "Affiches et miniatures", "Vidéos courtes", "Ton identité visuelle"],
+      scenes: [
+        { t: 'big', k: 'Bande-annonce', h: 'Un visuel pro sans graphiste, c’est possible ?', s: 'Quelques minutes suffisent.' },
+        { t: 'poster', h: "SOLDES DE FIN D'ANNÉE", s: 'Pagnes wax · Cocody', b: '-20 %' },
+        { t: 'steps', h: 'Tes outils', items: ['Génération d’images par IA', 'Canva pour les affiches', 'CapCut pour les vidéos'] }
+      ]
+    },
+    {
+      id: 'activite', cat: 'activite', tag: 'Activité et revenus', title: "L'IA pour ton activité", price: 10000,
+      dur: '4 séances de 2 h', lvl: 'Intermédiaire',
+      hook: "Savais-tu que tu peux générer des revenus juste dans ton salon avec l'IA ?",
+      pitch: "Moins de tâches répétitives, plus de temps et de clients pour ton activité.",
+      why: ["Devis, courriers et comptes rendus prêts en quelques minutes.",
+            "Tu réponds plus vite que tes concurrents, donc tu perds moins de clients.",
+            "Tu gardes des modèles que toute ton équipe peut réutiliser."],
+      learn: ["Rédiger devis, courriers et relances", "Remplir ton agenda avec des messages de rappel et de promotion", "Résumer un document ou une réunion", "Organiser ta semaine avec l'IA"],
+      who: "Salons, commerçants, dirigeants de petites entreprises, indépendants, assistants.",
+      prog: ["Cartographier tes tâches répétitives", "Devis, courriers et relances", "Rappels de rendez-vous et promotions", "Ton organisation de la semaine"],
+      scenes: [
+        { t: 'big', k: 'Bande-annonce', h: 'Tu perds des heures sur les mêmes tâches ?', s: "Ces tâches se préparent en quelques minutes." },
+        { t: 'prompt', l: 'Séance 2', p: "Écris un message de rappel pour une cliente qui a rendez-vous demain à 15 h dans mon salon de coiffure, ton chaleureux.", a: "Bonjour, un petit rappel pour votre rendez-vous demain à 15 h au salon. Si vous avez un empêchement, prévenez-nous simplement par message. À demain !" },
+        { t: 'steps', h: 'Tu automatises', items: ['Rappels de rendez-vous', 'Devis et factures', 'Relances et promotions', 'Réponses aux clients'] }
+      ]
+    },
+    {
+      id: 'revenus', cat: 'activite', tag: 'Activité et revenus', title: "Gagner de l'argent avec l'IA", price: 9000,
+      dur: '4 séances de 2 h', lvl: 'Intermédiaire',
+      hook: "Et si tes compétences pouvaient t'apporter un revenu complémentaire ?",
+      pitch: "Transforme ce que tu apprends en services que tu peux vendre.",
+      why: ["Tu démarres une activité sans local ni gros capital.",
+            "Tu choisis des services que tes clients comprennent et acceptent de payer.",
+            "Tu apprends à fixer tes prix et à livrer un travail propre."],
+      learn: ["Choisir deux services à proposer", "Construire une offre et un message de présentation", "Trouver tes premiers clients", "Fixer tes prix et livrer proprement"],
+      who: "Étudiants, demandeurs d'emploi, salariés qui veulent un revenu complémentaire.",
+      note: "Aucun revenu n'est garanti : tes résultats dépendent de ton travail et de tes clients.",
+      prog: ["Choisir tes services", "Construire ton offre", "Trouver tes premiers clients", "Prix, livraison et suivi"],
+      scenes: [
+        { t: 'big', k: 'Bande-annonce', h: 'Et si tu vendais ton premier service ce mois ?', s: 'Sans local, sans gros capital.' },
+        { t: 'steps', h: 'Des services demandés', items: ['Rédaction de textes', 'Traduction', 'Gestion de réseaux sociaux', 'Création de visuels'] },
+        { t: 'prompt', l: 'Séance 3', p: "Écris un message de présentation de mes services de rédaction pour des petites entreprises à Abidjan.", a: "Bonjour, je rédige vos textes : descriptions de produits, publications pour vos réseaux, courriers. Livraison sous 48 h et une correction incluse. Je peux vous envoyer un exemple gratuit pour votre activité." }
+      ]
+    },
+    {
+      id: 'dropship', cat: 'vendre', tag: 'Vendre en ligne', title: "Dropshipping avec l'IA", price: 10000,
+      dur: '5 séances de 2 h', lvl: 'Intermédiaire',
+      hook: "Savais-tu que tu peux vendre des produits sans stock chez toi ?",
+      pitch: "Lance une boutique sans stock : tu vends, le fournisseur livre.",
+      why: ["Tu démarres avec peu de capital, sans local ni stock acheté d'avance.",
+            "L'IA t'aide à trouver des idées de produits, écrire tes fiches et répondre aux clients.",
+            "Tu apprends à choisir entre fournisseur local et import, pour éviter les mauvaises surprises de délais."],
+      learn: ["Comprendre le modèle et ses vrais risques", "Choisir un produit et un fournisseur fiable", "Écrire fiches produits et messages de vente avec l'IA", "Gérer commandes, livraison, retours et encaissements"],
+      who: "Débutants en vente en ligne, commerçants qui veulent un canal de plus, étudiants.",
+      note: "Le dropshipping comporte des risques : délais de livraison, retours, marges réduites par les frais. Aucun revenu n'est garanti.",
+      prog: ["Comprendre le modèle et ses risques", "Choisir produit et fournisseur", "Fiches produits et visuels avec l'IA", "Vendre sur Facebook, Instagram et WhatsApp", "Commandes, livraison et service client"],
+      scenes: [
+        { t: 'big', k: 'Bande-annonce', h: 'Vendre sans stock, c’est possible ?', s: "Oui, à condition de connaître les règles du jeu." },
+        { t: 'steps', h: "Le circuit d'une commande", items: ['Le client commande sur WhatsApp', 'Tu transmets au fournisseur', 'Le fournisseur livre', 'Tu encaisses ta marge'] },
+        { t: 'prompt', l: 'Séance 3', p: "Écris la fiche d'un sac à dos étanche pour des étudiants à Abidjan : 3 atouts, ton direct, 60 mots.", a: "Sac à dos étanche, 20 litres : pour la pluie d'Abidjan comme pour les cours. Compartiment ordinateur, bretelles renforcées, fermeture solide. Léger, résistant, prêt à suivre ton rythme. Commande-le sur WhatsApp et reçois-le chez toi." }
+      ]
+    },
+    {
+      id: 'canva', cat: 'vendre', tag: 'Vendre en ligne', title: 'Canva pour vendre en ligne', price: 6000,
+      dur: '3 séances de 2 h', lvl: 'Débutant',
+      hook: "Pourquoi payer un graphiste pour tes visuels de vente ?",
+      pitch: "Crée des visuels qui donnent envie d'acheter, depuis ton téléphone.",
+      why: ["Un beau visuel fait la différence quand le client hésite.",
+            "Tes visuels restent cohérents : mêmes couleurs, même style.",
+            "Tu crées affiches, couvertures et stories en quelques minutes."],
+      learn: ["Prendre en main Canva", "Créer une affiche de promotion", "Créer la couverture d'un ebook ou d'un produit", "Préparer des stories et des publications prêtes à publier"],
+      who: "Vendeurs en ligne, créateurs de produits numériques, commerçants, étudiants.",
+      prog: ["Découvrir Canva", "Affiches et visuels produit", "Couvertures et stories"],
+      scenes: [
+        { t: 'big', k: 'Bande-annonce', h: 'Un visuel qui donne envie d’acheter, en quelques minutes ?', s: 'Canva fait le gros du travail.' },
+        { t: 'poster', h: 'NOUVEAU PRODUIT', s: 'Livraison à Abidjan', b: '5 000 F' },
+        { t: 'steps', h: 'Tu crées', items: ['Affiches de promotion', 'Couvertures d’ebook', 'Stories et publications', 'Visuels produit'] }
+      ]
+    },
+    {
+      id: 'numerique', cat: 'vendre', tag: 'Vendre en ligne', title: "Créer un ebook ou une mini-formation avec l'IA", price: 7500,
+      dur: '4 séances de 2 h', lvl: 'Tous niveaux',
+      hook: "Et si ce que tu sais déjà pouvait aider d'autres personnes ?",
+      pitch: "Transforme ton savoir-faire en produit que tu peux vendre.",
+      why: ["Tu pars de ce que tu sais déjà : cuisine, couture, coiffure, comptabilité, études.",
+            "L'IA t'aide à structurer le plan, rédiger et mettre en forme.",
+            "Un seul produit peut être vendu plusieurs fois, sans refaire le travail."],
+      learn: ["Choisir un sujet qui intéresse des acheteurs", "Construire un plan clair", "Rédiger et mettre en page avec l'IA et Canva", "Créer la couverture et le visuel de vente"],
+      who: "Experts d'un métier, enseignants, étudiants, créateurs.",
+      note: "Aucun revenu n'est garanti : la vente dépend de ton sujet et de ta promotion.",
+      prog: ["Choisir ton sujet", "Plan et rédaction avec l'IA", "Mise en page et couverture", "Prix et page de vente"],
+      scenes: [
+        { t: 'big', k: 'Bande-annonce', h: 'Qu’est-ce que tu sais faire mieux que les autres ?', s: 'Ça peut devenir un produit.' },
+        { t: 'steps', h: "De l'idée au produit", items: ['Choisir le sujet', 'Écrire le plan avec l’IA', 'Rédiger les chapitres', 'Créer la couverture'] },
+        { t: 'poster', h: 'GUIDE PRATIQUE', s: 'Réussir ses tresses à la maison', b: 'PDF' }
+      ]
+    },
+    {
+      id: 'pub', cat: 'vendre', tag: 'Vendre en ligne', title: "Publicité Facebook et TikTok avec l'IA", price: 10000,
+      dur: '4 séances de 2 h', lvl: 'Intermédiaire',
+      hook: "Combien de personnes pourraient te découvrir si tu savais faire une bonne publicité ?",
+      pitch: "Fais connaître tes produits sans gaspiller ton budget.",
+      why: ["Une bonne annonce touche les bonnes personnes au lieu de tout le monde.",
+            "L'IA t'aide à écrire plusieurs versions d'une annonce et à tester la meilleure.",
+            "Tu fixes un petit budget et tu suis tes résultats."],
+      learn: ["Définir ton client idéal", "Écrire des annonces et des visuels avec l'IA", "Lancer une première campagne avec un petit budget", "Lire les résultats et corriger"],
+      who: "Vendeurs en ligne, boutiques, créateurs de produits, community managers.",
+      note: "La diffusion des publicités est payante et le budget est à ta charge. Aucun résultat n'est garanti.",
+      prog: ["Ton client idéal et ton offre", "Annonces et visuels avec l'IA", "Lancer ta première campagne", "Analyser et améliorer"],
+      scenes: [
+        { t: 'big', k: 'Bande-annonce', h: 'Ta publicité touche-t-elle les bonnes personnes ?', s: 'On apprend à viser juste.' },
+        { t: 'compare',
+          a: { l: 'Annonce vague', p: 'Vends des chaussures pas chères.', r: 'Personne ne se sent visé' },
+          b: { l: 'Annonce ciblée', p: 'Pour les étudiantes d’Abidjan : baskets confortables, livraison à Cocody et Yopougon.', r: 'Le bon client s’arrête' } },
+        { t: 'steps', h: 'Ta première campagne', items: ['Choisir l’objectif', 'Définir le public', 'Écrire l’annonce', 'Fixer un petit budget'] }
+      ]
+    },
+    {
+      id: 'whatsapp', cat: 'vendre', tag: 'Vendre en ligne', title: 'Vendre sur WhatsApp Business', price: 5000,
+      dur: '3 séances de 2 h', lvl: 'Débutant',
+      hook: "Savais-tu que ton WhatsApp peut devenir ta vitrine ?",
+      pitch: "Transforme ton WhatsApp en boutique organisée.",
+      why: ["Tes clients sont déjà sur WhatsApp : tu vends là où ils sont.",
+            "Catalogue, réponses rapides et messages d'absence te font gagner du temps.",
+            "L'IA prépare tes réponses et tes messages de relance."],
+      learn: ["Configurer ton profil professionnel et ton catalogue", "Créer des réponses rapides", "Rédiger messages de vente et relances avec l'IA", "Suivre tes clients avec les étiquettes"],
+      who: "Commerçants, vendeurs en ligne, prestataires de services.",
+      prog: ["Profil et catalogue", "Réponses rapides et messages automatiques", "Relances et suivi des clients"],
+      scenes: [
+        { t: 'big', k: 'Bande-annonce', h: 'Ton WhatsApp est-il prêt à vendre ?', s: 'Un profil bien réglé change tout.' },
+        { t: 'prompt', l: 'Séance 2', p: "Écris un message de relance pour une cliente qui a demandé le prix d'une robe hier et n'a pas répondu.", a: "Bonjour, je reviens vers vous pour la robe dont vous avez demandé le prix hier. Elle est toujours disponible. Souhaitez-vous que je vous la mette de côté ?" },
+        { t: 'steps', h: 'Ta vitrine WhatsApp', items: ['Profil professionnel', 'Catalogue de produits', 'Réponses rapides', 'Étiquettes clients'] }
+      ]
+    }
+  ];
+
+  /* ---------- Bande-annonce : moteur ---------- */
+  function sceneHTML(s, f) {
+    var h = '';
+    if (s.t === 'big') {
+      h = '<div class="sc"><span class="k" style="--i:0">' + s.k + '</span><h4 style="--i:1">' + s.h + '</h4><p style="--i:3">' + s.s + '</p></div>';
+    } else if (s.t === 'prompt') {
+      h = '<div class="sc"><span class="k">' + s.l + '</span><div class="bub me" style="--i:1"><b>Toi</b><span class="tp"></span></div><div class="bub ai" style="--i:0"><b>IA</b><span class="ta"></span></div></div>';
+    } else if (s.t === 'steps') {
+      h = '<div class="sc sc-steps"><h4>' + s.h + '</h4><ul>' + s.items.map(function (x, i) { return '<li style="--i:' + i + '"><i></i>' + x + '</li>'; }).join('') + '</ul></div>';
+    } else if (s.t === 'compare') {
+      h = '<div class="sc"><div class="cmps">' +
+        '<div class="cmp bad"><div class="l" style="--i:0">' + s.a.l + '</div><div class="pp" style="--i:1">' + s.a.p + '</div><div class="rr" style="--i:2">' + s.a.r + '</div></div>' +
+        '<div class="cmp good"><div class="l" style="--i:4">' + s.b.l + '</div><div class="pp" style="--i:5">' + s.b.p + '</div><div class="rr" style="--i:6">' + s.b.r + '</div></div>' +
+        '</div></div>';
+    } else if (s.t === 'cal') {
+      var pat = [0,3,1,0,2,3,0, 1,0,3,2,0,1,3, 0,2,0,1,3,0,2, 3,0,1,0,2,0,1], c = '';
+      for (var i = 0; i < 28; i++) c += '<i class="c' + pat[i] + '" style="--i:' + i + '"></i>';
+      h = '<div class="sc"><h4>' + s.h + '</h4><div class="cal">' + c + '</div>' +
+        '<div class="legend" style="--i:12"><span style="--c:var(--stage-brand)">Publication</span><span style="--c:var(--stage-accent)">Vidéo</span><span style="--c:#F4F1E8">Story</span><span style="--c:rgba(255,255,255,.3)">Repos</span></div></div>';
+    } else if (s.t === 'poster') {
+      h = '<div class="sc"><div class="pst"><h5>' + s.h + '</h5><div class="ps">' + s.s + '</div><span class="pc"></span><span class="pbadge">' + s.b + '</span></div></div>';
+    } else if (s.t === 'cta') {
+      h = '<div class="sc sc-cta"><span class="k" style="--i:0">Inscriptions ouvertes</span><h4 style="--i:1">' + f.title + '</h4><p style="--i:2">' + f.dur + ' · ' + f.lvl + '</p><div class="price" style="--i:3">' + money(f.price) + ' FCFA</div><button type="button" class="pill" style="--i:4">Je m\u2019inscris</button></div>';
+    }
+    return h;
+  }
+  function sceneDur(s) {
+    switch (s.t) {
+      case 'big': return 3400;
+      case 'prompt': return 900 + s.p.length * 22 + 500 + s.a.length * 13 + 1500;
+      case 'steps': return 900 + s.items.length * 550 + 1600;
+      case 'compare': return 6400;
+      case 'cal': return 4600;
+      case 'poster': return 4800;
+      default: return 4000;
+    }
+  }
+
+  function mountTrailer(host, f) {
+    var sc = f.scenes.concat([{ t: 'cta' }]);
+    var bars = sc.map(function (_, i) { return '<button type="button" data-i="' + i + '" aria-label="Scène ' + (i + 1) + '"></button>'; }).join('');
+    host.innerHTML = '<div class="trailer paused" role="group" aria-label="Bande-annonce : ' + f.title.replace(/"/g, '') + '"><div class="tr-bars">' + bars + '</div><span class="tr-label">Bande-annonce</span><div class="tr-stage"></div><button type="button" class="tr-btn" aria-label="Lecture ou pause"><i></i><span class="lbl">Lecture</span></button></div>';
+    var root = host.firstChild, stage = root.querySelector('.tr-stage'), btns = root.querySelectorAll('.tr-bars button'), lbl = root.querySelector('.lbl');
+    var i = 0, playing = false, userPaused = false, timer = null, token = 0;
+
+    function typeTo(el, text, speed, tok, cb) {
+      var k = 0;
+      (function step() {
+        if (tok !== token) return;
+        k += 1; el.textContent = text.slice(0, k);
+        if (k < text.length) setTimeout(step, speed); else if (cb) cb();
+      })();
+    }
+    function go(n) {
+      clearTimeout(timer); token += 1; var tok = token;
+      i = n; var s = sc[n], d = sceneDur(s);
+      stage.innerHTML = sceneHTML(s, f);
+      for (var b = 0; b < btns.length; b++) {
+        btns[b].className = b < n ? 'done' : (b === n ? 'cur' : '');
+        if (b === n) { btns[b].style.setProperty('--d', d + 'ms'); }
+      }
+      if (s.t === 'prompt') {
+        var tp = stage.querySelector('.tp'), ta = stage.querySelector('.ta'), ai = stage.querySelector('.bub.ai');
+        if (playing) {
+          setTimeout(function () {
+            typeTo(tp, s.p, 22, tok, function () {
+              setTimeout(function () { if (tok !== token) return; ai.classList.add('on'); typeTo(ta, s.a, 13, tok); }, 450);
+            });
+          }, 900);
+        } else { tp.textContent = s.p; ta.textContent = s.a; ai.classList.add('on'); }
+      }
+      if (playing) timer = setTimeout(function () { go((i + 1) % sc.length); }, d);
+    }
+    function play() { playing = true; root.classList.remove('paused'); lbl.textContent = 'Pause'; go(i); }
+    function pause() { playing = false; root.classList.add('paused'); lbl.textContent = 'Lecture'; go(i); }
+
+    root.addEventListener('click', function (e) {
+      var rg = e.target.closest('.pill');
+      if (rg) { openModal(f.title, rg); return; }
+      var b = e.target.closest('.tr-bars button');
+      if (b) { go(+b.getAttribute('data-i')); return; }
+      if (reduce) { go((i + 1) % sc.length); return; }
+      if (playing) { userPaused = true; pause(); } else { userPaused = false; play(); }
+    });
+    go(0);
+    if (!reduce && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (en) {
+          if (en.isIntersecting && !userPaused && !playing) play();
+          else if (!en.isIntersecting && playing) pause();
+        });
+      }, { threshold: 0.6 }).observe(root);
+    }
+  }
+
+  /* ---------- Vitrines ---------- */
+  var shows = document.getElementById('shows');
+  F.forEach(function (f, n) {
+    var el = document.createElement('article');
+    el.className = 'show rv' + (n % 2 ? ' alt' : '');
+    el.setAttribute('data-cat', f.cat);
+    el.setAttribute('data-title', f.title);
+    el.innerHTML =
+      '<div class="show-trailer"><div class="tslot"></div></div>' +
+      '<div class="show-info">' +
+        '<span class="tag">' + f.tag + '</span>' +
+        '<h3>' + f.title + '</h3>' +
+        '<p class="hook">' + f.hook + '</p>' +
+        '<p class="pitch">' + f.pitch + '</p>' +
+        '<div class="pills"><span>' + f.dur + '</span><span>' + f.lvl + '</span><span>En ligne, en direct</span></div>' +
+        '<h4>Pourquoi c’est utile</h4><ul class="checks">' + f.why.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>' +
+        '<h4>À la fin, tu sauras</h4><ul class="checks">' + f.learn.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ul>' +
+        '<p class="who"><b>Pour qui :</b> ' + f.who + '</p>' +
+        '<details class="prog"><summary>Voir le programme</summary><ol>' + f.prog.map(function (x) { return '<li>' + x + '</li>'; }).join('') + '</ol></details>' +
+        '<div class="buy"><div class="p">' + money(f.price) + ' FCFA<small>' + f.dur + (f.was ? ' \u00b7 au lieu de ' + money(f.was) + ' FCFA' : '') + '</small></div><button type="button" class="btn btn-hot" data-pick>Je m’inscris</button></div>' +
+        (f.note ? '<p class="note">' + f.note + '</p>' : '') +
+      '</div>';
+    shows.appendChild(el);
+    mountTrailer(el.querySelector('.tslot'), f);
+  });
+
+  /* ---------- Filtres ---------- */
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var blocks = Array.prototype.slice.call(document.querySelectorAll('.show'));
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      chips.forEach(function (o) { o.setAttribute('aria-pressed', o === c ? 'true' : 'false'); });
+      var fl = c.getAttribute('data-filter'), k = 0;
+      blocks.forEach(function (b) {
+        var ok = fl === 'all' || b.getAttribute('data-cat') === fl;
+        b.hidden = !ok;
+        if (ok) { b.classList.toggle('alt', k % 2 === 1); k += 1; }
+      });
+    });
+  });
+
+  /* ---------- Contact ---------- */
+  var sel = document.getElementById('formation'), nom = document.getElementById('nom'), fmt = document.getElementById('format'), msg = document.getElementById('msg');
+  var og = document.getElementById('og');
+  F.forEach(function (f) { if (f.pack) return; var o = document.createElement('option'); o.value = f.title; o.textContent = f.title; og.appendChild(o); });
+  /* Paiement : remplace les numéros par les tiens. Ajoute un lien de paiement dans link (ex. lien Wave Business) si tu en as un. */
+  var PAY = [
+    { id: 'wave', name: 'Wave', num: '07 48 78 64 21', link: '' },
+    { id: 'mtn', name: 'MTN MoMo', num: '05 65 55 92 87', link: '' },
+    { id: 'moov', name: 'Moov Money', num: '01 41 45 43 98', link: '' }
+  ];
+  var PRICE = { 'Séance découverte': 5000 };
+  F.forEach(function (f) { PRICE[f.title] = f.price; });
+  var WA = '2250565559287';
+  var ref = 'KIA-' + String(Math.floor(1000 + Math.random() * 9000));
+  var pmBox = document.getElementById('pm'), sumEl = document.getElementById('sum'), payEl = document.getElementById('copay');
+  var pmSel = '';
+  PAY.forEach(function (p) {
+    var l = document.createElement('label'); l.className = 'pmopt';
+    l.innerHTML = '<input type="radio" name="pm" id="pm-' + p.id + '" value="' + p.id + '"><span>' + p.name + '</span>';
+    pmBox.appendChild(l);
+    l.querySelector('input').addEventListener('change', function () { pmSel = p.id; build(); });
+  });
+  function label(f) {
+    if (/^(Parcours|Pack)/.test(f)) return 'le « ' + f + ' »';
+    if (f === 'Séance découverte') return 'la « ' + f + ' »';
+    return 'la formation « ' + f + ' »';
+  }
+  function build() {
+    var n = nom.value.trim(), f = sel.value, price = PRICE[f], p = null;
+    PAY.forEach(function (x) { if (x.id === pmSel) p = x; });
+    var intro = n ? 'Bonjour, je m’appelle ' + n + '. ' : 'Bonjour. ';
+    sumEl.textContent = '';
+    var s1 = document.createElement('span'), s2 = document.createElement('b');
+    if (f) { s1.textContent = f; s2.textContent = money(price) + ' FCFA'; }
+    else { s1.textContent = 'Choisis une formation pour voir le montant.'; }
+    sumEl.appendChild(s1); if (f) sumEl.appendChild(s2);
+
+    payEl.textContent = '';
+    if (!f) {
+      payEl.textContent = 'Choisis d’abord ta formation.';
+    } else if (!p) {
+      payEl.textContent = 'Choisis ton mode de paiement pour voir comment payer.';
+    } else {
+      var ol = document.createElement('ol');
+      ol.innerHTML =
+        '<li>Ouvre <b>' + p.name + '</b> et envoie <b>' + money(price) + ' FCFA</b> au numéro <span class="n2">' + p.num + '</span>.</li>' +
+        '<li>Si tu peux, écris la référence <b class="n2">' + ref + '</b> dans le motif du paiement.</li>' +
+        '<li>Garde la capture d’écran, puis copie le message ci-dessous et envoie-le sur WhatsApp avec la capture.</li>';
+      payEl.appendChild(ol);
+      if (p.link) {
+        var a = document.createElement('a'); a.className = 'btn btn-hot'; a.href = p.link; a.target = '_blank'; a.rel = 'noopener';
+        a.textContent = 'Payer avec ' + p.name; payEl.appendChild(a);
+      }
+      var note = document.createElement('p'); note.className = 'pnote';
+      note.textContent = 'Ta place est confirmée dès que nous avons vérifié ton paiement.';
+      payEl.appendChild(note);
+    }
+
+    var body;
+    if (f && p) {
+      body = 'J’ai payé ' + money(price) + ' FCFA par ' + p.name + ' pour ' + label(f) + ', en format : ' + fmt.value.toLowerCase() + '. Référence : ' + ref + '. Voici ma capture de paiement.';
+    } else if (f) {
+      body = 'Je suis intéressé(e) par ' + label(f) + ', en format : ' + fmt.value.toLowerCase() + '. Pouvez-vous me donner les prochaines dates et les modalités de paiement ?';
+    } else {
+      body = 'Je voudrais apprendre à utiliser l’IA mais je ne sais pas par où commencer. Pouvez-vous me conseiller une formation ? Format souhaité : ' + fmt.value.toLowerCase() + '.';
+    }
+    msg.value = intro + body;
+    var wa = document.getElementById('wa');
+    if (wa) wa.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg.value);
+  }
+  [nom, sel, fmt].forEach(function (el) { el.addEventListener('input', build); el.addEventListener('change', build); });
+  build();
+  /* Fenêtre d'inscription */
+  var modal = document.getElementById('modal'), box = modal.querySelector('.modal-box'), lastFocus = null;
+  function openModal(pre, from) {
+    if (pre && PRICE[pre]) sel.value = pre;
+    build();
+    lastFocus = from || document.activeElement;
+    modal.hidden = false;
+    document.documentElement.classList.add('modal-open');
+    box.scrollTop = 0;
+    box.focus();
+  }
+  function closeModal() {
+    modal.hidden = true;
+    document.documentElement.classList.remove('modal-open');
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  document.querySelectorAll('[data-open]').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); openModal(el.getAttribute('data-open'), el); });
+  });
+  document.querySelectorAll('[data-pick]').forEach(function (b) {
+    b.addEventListener('click', function () { openModal(b.closest('.show').getAttribute('data-title'), b); });
+  });
+  modal.addEventListener('click', function (e) { if (e.target.closest('[data-close]')) closeModal(); });
+  document.addEventListener('keydown', function (e) {
+    if (modal.hidden) return;
+    if (e.key === 'Escape') { closeModal(); return; }
+    if (e.key !== 'Tab') return;
+    var list = Array.prototype.filter.call(box.querySelectorAll('a[href],button,input,select,textarea'), function (x) { return !x.disabled && x.offsetParent !== null; });
+    if (!list.length) return;
+    var first = list[0], last = list[list.length - 1];
+    if (e.shiftKey && (document.activeElement === first || document.activeElement === box)) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+  var cmb = document.getElementById('copymail'), cmo = document.getElementById('cmout');
+  cmb.addEventListener('click', function () {
+    var t = 'kelanIAservice@gmail.com', fail = 'Sélectionne l’adresse et copie-la.';
+    try { navigator.clipboard.writeText(t).then(function () { cmo.textContent = 'Adresse copiée.'; }, function () { cmo.textContent = fail; }); }
+    catch (e) { cmo.textContent = fail; }
+  });
+  var out = document.getElementById('copied');
+  document.getElementById('copy').addEventListener('click', function () {
+    function fallback() { msg.focus(); msg.select(); out.textContent = 'Le texte est sélectionné : copie-le avec ton clavier ou par appui long.'; }
+    try { navigator.clipboard.writeText(msg.value).then(function () { out.textContent = 'Message copié. Colle-le dans WhatsApp.'; }, fallback); }
+    catch (e) { fallback(); }
+  });
+
+  /* ---------- Démo du hero ---------- */
+  var demo = [
+    { p: "Tu es community manager. Écris un post Instagram pour ma boutique de pagnes à Cocody : nouvelle collection, livraison à Abidjan, ton chaleureux, 3 hashtags.",
+      a: "Nouvelle collection de pagnes, arrivée cette semaine à la boutique. Wax, bogolan, des motifs que vous ne verrez nulle part ailleurs. Livraison partout à Abidjan, paiement par Wave ou Orange Money. Écrivez-nous en message privé pour réserver votre pièce. #PagnesAbidjan #ModeIvoirienne #Wax" },
+    { p: "Un client demande le prix de la livraison à Yopougon et si on accepte Wave. Réponds poliment en 2 phrases, pour WhatsApp.",
+      a: "Bonjour, merci pour votre message. La livraison à Yopougon est à 1 500 FCFA et nous acceptons Wave avec plaisir. Dites-moi quel article vous intéresse et je vous envoie le récapitulatif." },
+    { p: "Donne-moi 3 idées de vidéos TikTok de 30 secondes pour un salon de coiffure à Bouaké.",
+      a: "1. Un avant/après d'une coiffure en 30 secondes, avec le prix affiché à l'écran.\n2. Les 3 erreurs qui abîment les tresses.\n3. Une journée au salon, du premier client à la fermeture." }
+  ];
+  var dTabs = [document.getElementById('t0'), document.getElementById('t1'), document.getElementById('t2')];
+  var dP = document.getElementById('d-prompt'), dA = document.getElementById('d-answer'), dTok = 0;
+  dA.style.whiteSpace = 'pre-line';
+  dTabs.forEach(function (t, k) {
+    t.addEventListener('click', function () {
+      dTabs.forEach(function (o, j) { o.setAttribute('aria-selected', j === k ? 'true' : 'false'); });
+      dTok += 1; var tok = dTok;
+      dP.textContent = demo[k].p;
+      if (reduce) { dA.textContent = demo[k].a; dA.classList.remove('caret'); return; }
+      dA.textContent = ''; dA.classList.add('caret');
+      var c = 0;
+      (function step() {
+        if (tok !== dTok) return;
+        c += 2; dA.textContent = demo[k].a.slice(0, c);
+        if (c < demo[k].a.length) setTimeout(step, 16); else dA.classList.remove('caret');
+      })();
+    });
+  });
+
+  /* ---------- Mot qui tourne ---------- */
+  var rot = document.getElementById('rot'), words = ['ta boutique', 'tes réseaux sociaux', 'tes clients', 'ton salon', 'tes études', 'ta boutique en ligne'], w = 0;
+  if (!reduce) {
+    setInterval(function () {
+      rot.classList.add('out');
+      setTimeout(function () { w = (w + 1) % words.length; rot.textContent = words[w]; rot.classList.remove('out'); }, 360);
+    }, 2600);
+  }
+
+  /* ---------- Bandeau de questions ---------- */
+  var Q = [
+    "Savais-tu que tu peux générer des revenus juste dans ton salon avec l'IA ?",
+    "Et si ton téléphone devenait ton premier outil de travail ?",
+    "Combien de clients as-tu déjà perdus parce que tu as répondu trop tard ?",
+    "Pourquoi payer un graphiste pour une simple affiche, alors que tu peux la créer en quelques minutes ?",
+    "Qui répondra à ton prochain client s'il t'écrit ce soir ?",
+    "Savais-tu que tu peux vendre un ebook sans stock, sans local et sans livraison ?",
+    "Qui t'empêche de lancer ta boutique en ligne cette semaine ?",
+    "Combien d'heures perds-tu chaque semaine sur des tâches que l'IA peut préparer pour toi ?",
+    "Et si tu commençais aujourd'hui plutôt que « un jour » ?",
+    "Ton concurrent utilise peut-être déjà l'IA. Et toi ?",
+    "Savais-tu qu'un seul bon post peut te ramener de nouveaux clients ?",
+    "Qu'est-ce que tu sais faire que d'autres seraient prêts à payer pour apprendre ?"
+  ];
+  var qt = document.getElementById('qtxt'), qd = document.getElementById('qdots'), qi = 0, qHold = false, qBand = document.getElementById('qband');
+  Q.forEach(function (_, k) {
+    var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Question ' + (k + 1));
+    b.addEventListener('click', function () { showQ(k); });
+    qd.appendChild(b);
+  });
+  function dots() { Array.prototype.forEach.call(qd.children, function (b, k) { if (k === qi) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); }); }
+  function showQ(n) {
+    qi = (n + Q.length) % Q.length;
+    if (reduce) { qt.textContent = Q[qi]; dots(); return; }
+    qt.classList.add('out');
+    setTimeout(function () { qt.textContent = Q[qi]; qt.classList.remove('out'); dots(); }, 300);
+  }
+  dots();
+  document.getElementById('qnext').addEventListener('click', function () { showQ(qi + 1); });
+  ['mouseenter', 'focusin', 'touchstart'].forEach(function (ev) { qBand.addEventListener(ev, function () { qHold = true; }, { passive: true }); });
+  ['mouseleave', 'focusout'].forEach(function (ev) { qBand.addEventListener(ev, function () { qHold = false; }); });
+  if (!reduce) setInterval(function () { if (!qHold) showQ(qi + 1); }, 6500);
+
+  /* ---------- Savais-tu que ---------- */
+  document.querySelectorAll('.dk').forEach(function (b) {
+    b.addEventListener('click', function () { b.setAttribute('aria-expanded', b.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'); });
+  });
+
+  /* ---------- Simulateur ---------- */
+  var sn = document.getElementById('sim-n'), sm = document.getElementById('sim-m'), sg = document.getElementById('sim-g');
+  var rh = document.getElementById('r-h'), rd = document.getElementById('r-d'), shown = 7.2, raf = 0;
+  function fr(x) { return x.toFixed(1).replace('.', ','); }
+  function calc() {
+    var n = +sn.value, m = +sm.value, g = +sg.value;
+    document.getElementById('o-n').textContent = n;
+    document.getElementById('o-m').textContent = m + ' min';
+    document.getElementById('o-g').textContent = g + ' %';
+    var hours = n * m * (g / 100) * 4.3 / 60, days = Math.round(hours * 12 / 8);
+    rd.textContent = 'Soit environ ' + days + (days > 1 ? ' journées' : ' journée') + ' de travail par an à reprendre pour toi.';
+    cancelAnimationFrame(raf);
+    if (reduce) { rh.textContent = fr(hours); shown = hours; return; }
+    var from = shown, t0 = null;
+    (function tick(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min(1, (t - t0) / 450);
+      shown = from + (hours - from) * (1 - Math.pow(1 - p, 3));
+      rh.textContent = fr(shown);
+      if (p < 1) raf = requestAnimationFrame(tick);
+    })(performance.now());
+  }
+  [sn, sm, sg].forEach(function (el) { el.addEventListener('input', calc); });
+  calc();
+
+  /* ---------- Apparition au défilement ---------- */
+  var rvs = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.08 });
+    rvs.forEach(function (el) { io.observe(el); });
+  } else {
+    rvs.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ---------- Barre d'inscription ---------- */
+  var sticky = document.getElementById('sticky'), contactSeen = false;
+  function stick() { sticky.classList.toggle('on', window.scrollY > 700 && !contactSeen); }
+  window.addEventListener('scroll', stick, { passive: true });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { contactSeen = es[0].isIntersecting; stick(); }).observe(document.getElementById('contact'));
+  }
+  stick();
+})();
+</script>
+
+</body>
+</html>
